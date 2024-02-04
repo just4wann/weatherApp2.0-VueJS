@@ -6,8 +6,8 @@ const props = defineProps({
   dataFetching: Object
 })
 
-const [sunsetTime = time] = getCurrentTime(props.dataFetching?.sys.sunset)
-const [sunriseTime = time] = getCurrentTime(props.dataFetching?.sys.sunrise)
+const [sunsetTime] = getCurrentTime(props.dataFetching?.sys.sunset)
+const [sunriseTime] = getCurrentTime(props.dataFetching?.sys.sunrise)
 
 const listHighlights = ref([
   {
