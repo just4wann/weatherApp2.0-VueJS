@@ -42,11 +42,6 @@ export const countryNameByCode = LIST_COUNTRY_CODE.reduce((acc, cur) => ({
     ...acc, [cur.code]: cur.name
 }), {});
 
-export const countryCode = LIST_COUNTRY_CODE.reduce((acc, cur) => ({
-  ...acc, 
-  [cur.code]: cur.code
-}), {}) 
-
 // Weather Image
 export const listWeatherImage = {
   Clouds: 'src/assets/icon/weather/clouds-strokeless.png',
