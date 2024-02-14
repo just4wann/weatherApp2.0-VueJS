@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, defineAsyncComponent } from 'vue';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ const getWeatherData = async (city) => {
   }
 };
 
-const handleLocationData = async (locationParams) => {
+const handleLocationData = async (locationParams: string) => {
   if (!locationParams) {
     console.log('no location');
     inputEmpty.value = true;
@@ -67,7 +67,27 @@ const handleLocationData = async (locationParams) => {
   addWeatherSearched(weatherData.value)
 };
 
-const addWeatherSearched = (weatherPayload) => {
+interface Data {
+  name: string,
+  sys: {
+    country: string
+  },
+  main: {
+    temp: number,
+    humidity: number,
+    pressure: number
+  },
+  wind: {
+    speed: number
+  },
+  weather: [
+    {
+      main: string
+    }
+  ]
+}
+
+const addWeatherSearched = (weatherPayload: Data) => {
   listSummaryWeather.value.unshift({
     id: key.value,
     cityName: `${weatherPayload.name}, ${countryNameByCode[weatherPayload.sys.country]}`,
